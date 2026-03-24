@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Google Meet View People</title>
+  </head>
+
+  <style>
+    body {
+      /* display: flex; */
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: rgb(28, 28, 28);
+    }
+
+    .First-Container {
+      width: 300px;
+      background-color: black;
+      margin: 10px;
+      padding: 10px;
+      color: white;
+      border-radius: 10px;
+      overflow-y: scroll;
+      scrollbar-width: none;
+    }
+
+    .Second-Container {
+      background-color: rgb(33 33 33 / 91%);
+      border-radius: 20px;
+      padding: 10px;
+      margin: 10px;
+      overflow-y: scroll;
+      scrollbar-width: none;
+    }
+
+    .header {
+      display: flex;
+      background-color: rgb(33, 31, 31);
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .controls button {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 20px;
+      align-items: center;
+      background-color: #16466a;
+      color: white;
+      border: none;
+      flex: 1;
+      padding: 9px 10px;
+      margin: 0 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .controls button:hover {
+      background-color: #455265;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .h3 {
+      margin: 0;
+    }
+
+    .participant {
+      padding: 5px 0;
+      
+    }
+
+    .search {
+      width: 100%;
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      background-color: #2a2a2a;
+      padding: 5px 10px;
+      border-radius: 10px;
+      border: 1px solid white;
+    }
+
+    .search input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      margin-left: 8px;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 0;
+      font-size: 16px;
+    }
+
+    .search input::placeholder {
+      color: #aaa;
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+    }
+
+    section p {
+      font-size: 9px;
+      color: #aaa; /* light grey */
+      margin: 30px 30px 0 5px; /* top-bottom spacing */
+      letter-spacing: 1px; /* थोड़ा spacing letters में */
+    }
+
+    .Third-Container {
+      min-height: 300px;
+      padding: 10px 0;
+      border: 1px solid white;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 20px 0;
+    }
+
+    .participants {
+      min-height: 250px;
+      border: 1px solid white;
+      border-radius: 10px;
+    }
+
+    .contributors {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+      padding: 10px 5px;
+      border-bottom: 1px solid #444;
+      font-weight: bold;
+    }
+  </style>
+
+  <body>
+    <div class="First-Container">
+      <div class="Second-Container">
+        <div class="header">
+          <h3>People</h3>
+          <button>X</button>
+        </div>
+
+        <div class="controls">
+          <button>
+            <!-- Mute Icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.06c1.48-.74 2.5-2.26 2.5-4.03zM19 12c0 2.5-1.5 4.68-3.66 5.74l1.42 1.42C19.24 17.9 21 15.15 21 12h-2zM4.27 3L3 4.27l5 5V12c0 1.38.56 2.63 1.46 3.54l-1.27 1.27C6.9 15.73 6 13.98 6 12H4c0 2.67 1.28 5.03 3.25 6.5L3 22l1.27 1.27 18-18L20.73 3 4.27 3z"
+              />
+            </svg>
+            All muted
+          </button>
+
+          <button>
+            <!-- Add People Icon -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M15 12c2.21 0 4-1.79 4-4S17.21 4 15 4s-4 1.79-4 4 1.79 4 4 4zM6 10V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h10v-2c0-.73.19-1.41.52-2H15z"
+              />
+            </svg>
+            Add people
+          </button>
+        </div>
+
+        <div class="search">
+          <span class="icon">
+            <!-- SVG -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+              <path
+                d="M10 2a8 8 0 105.293 14.293l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"
+              />
+            </svg>
+          </span>
+          <input type="text" id="searchBox" placeholder="Search for people" />
+        </div>
+
+        <section>
+          <p>IN THE MEETING</p>
+        </section>
+
+        <div class="Third-Container">
+          <div class="contributors">
+            <span>contributors</span>
+            <span id="count">0</span>
+          </div>
+
+          <div class="participants" id="results">
+            <!-- JS se populate hoga -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const names = [
+        "Vidhya Skill School(You)",
+        "Abhishek Garg",
+        "Almas Chamadiya",
+        "ANKIT RAJPUT",
+        "Ashitosh Vidhate",
+        "Aviral Jain",
+        "Ayush Gupta",
+        "Deepanshu Garg",
+        "Pinky Thawani",
+        "Prakash",
+        "Pranav Khare",
+        "Rakshit Dalal",
+        "Shivani Vishwakarma",
+        "Shruti Prajapati",
+        "vikas vanve",
+      ];
+
+      const searchBox = document.getElementById("searchBox");
+      const results = document.getElementById("results");
+
+      show(names);
+
+      searchBox.addEventListener("input", () => {
+        const value = searchBox.value.toLowerCase();
+
+        const filtered = names.filter(
+          (name) => name.toLowerCase().search(value) !== -1,
+        );
+
+        show(filtered);
+      });
+
+      function show(namesList) {
+        results.innerHTML = "";
+
+        document.getElementById("count").textContent = namesList.length;
+
+        namesList.forEach((name) => {
+          const div = document.createElement("div");
+          div.className = "participant";
+          div.innerHTML = `<span>${name}</span>`;
+          results.appendChild(div);
+        });
+      }
+    </script>
+  </body>
+</html>
